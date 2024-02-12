@@ -12,11 +12,8 @@ public class CameraControl : MonoBehaviour
     private float xRotation = 0f;
     //private float yRotation = 90f;
 
-    public static CameraControl CC;
-
     void Start()
     {
-        if (CC == null) CC = this;
         Cursor.lockState = CursorLockMode.Locked;
         playerBody = transform.parent;
     }
@@ -33,7 +30,7 @@ public class CameraControl : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y");
 
         xRotation -= mouseY * mouseSensitivity * Time.deltaTime;
-        xRotation = Mathf.Clamp(xRotation, -90f, 80f);
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         transform.localRotation = Quaternion.Euler(xRotation, 90f, 0f);
 
